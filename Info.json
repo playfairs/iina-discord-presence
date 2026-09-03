@@ -1,7 +1,7 @@
 {
   "name": "iina-discord-presence",
   "identifier": "com.playfairs.iina-discord-presence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "ghRepo": "playfairs/iina-discord-presence",
   "ghVersion": 12,
   "description": "Discord Rich Presence for IINA.",
@@ -9,12 +9,6 @@
     "name": "playfairs"
   },
   "entry": "src/index.js",
-  "permissions": [
-    "show-osd",
-    "show-alert",
-    "network-request"
-  ],
-  "allowedDomains": [
-    "*"
-  ]
+  "permissions": ["show-osd", "show-alert", "network-request"],
+  "allowedDomains": ["*"]
 }
