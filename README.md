@@ -30,6 +30,14 @@ Download the latest `.iinaplgz` file from [Releases](https://github.com/playfair
 ```bash
 git clone https://github.com/playfairs/iina-discord-presence
 cd iina-discord-presence
-npm install
-npm run build
+nix develop -c just build
+```
+
+The plugin archive is written to `build/iina-discord-presence.iinaplgz`.
+
+Nix provides the build tools, including `just`, Node.js, and `zip`. To enter the
+development shell interactively, run:
+
+```bash
+nix develop
 ```
