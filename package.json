@@ -2,9 +2,5 @@
   "name": "iina-discord-presence",
   "version": "0.1.0",
   "private": true,
-  "description": "Discord Rich Presence for IINA.",
-  "scripts": {
-    "check": "node --check src/index.js",
-    "package": "zip -r -q iina-discord-presence.iinaplgz Info.json src package.json -x '*.DS_Store'"
-  }
+  "description": "Discord Rich Presence for IINA."
 }
