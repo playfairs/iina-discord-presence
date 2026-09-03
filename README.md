@@ -1,15 +1,14 @@
 # IINA Discord Presence
 
-A better version of **[IINAcord](https://github.com/playfairs/iinacord)**.
-
 Discord Rich Presence for [IINA](https://iina.io/).
 
 ## Features
 
-* Shows what you're watching
-* Displays playback progress
-* Updates when you play, pause, seek, or change media
-* Clears your presence when nothing is playing
+- Shows `Watching <video name>` for video files
+- Shows `Listen to <audio name>` for audio files
+- Adds the source URL as an RPC button for web media
+- Updates on play, pause, seek, and media changes
+- Clears the presence when playback ends
 
 ## Installation
 
