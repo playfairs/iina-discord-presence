@@ -2,6 +2,10 @@
 
 Discord Rich Presence for [IINA](https://iina.io/).
 
+>[!IMPORTANT]
+> THIS PLUGIN DOES NOT WORK, I HAVE NOT FIGURED OUT HOW TO INTERACT WITH THE
+DISCORD IPC WITH **IINA**, IT MAY NOT BE POSSIBLE. This plugin remains unfinished.
+
 ## Features
 
 - Shows `Watching <video name>` for video files
