@@ -1,28 +1,35 @@
 # IINA Discord Presence
 
-A Discord Rich Presence plugin for [IINA](https://iina.io/).
+A better version of **[IINAcord](https://github.com/playfairs/iinacord)**.
 
-## Status
+Discord Rich Presence for [IINA](https://iina.io/).
 
-The plugin currently verifies that it loads in IINA and shows a startup notification. Discord RPC requires a small helper process because IINA JavaScript plugins cannot access Discord's local IPC socket directly.
+## Features
+
+* Shows what you're watching
+* Displays playback progress
+* Updates when you play, pause, seek, or change media
+* Clears your presence when nothing is playing
 
 ## Installation
 
-### From GitHub
+### GitHub
 
-After committing and pushing this directory, install `playfairs/iina-discord-presence` from IINA's plugin installer.
+In IINA, install the plugin from GitHub:
 
-### From an archive
-
-```bash
-npm run package
+```text
+playfairs/iina-discord-presence
 ```
 
-Open the generated `iina-discord-presence.iinaplgz` file with IINA.
+### `.iinaplgz`
+
+Download the latest `.iinaplgz` file from [Releases](https://github.com/playfairs/iina-discord-presence/releases) and open it with IINA.
 
 ## Development
 
 ```bash
-npm run check
-npm run package
+git clone https://github.com/playfairs/iina-discord-presence
+cd iina-discord-presence
+npm install
+npm run build
 ```
