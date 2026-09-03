@@ -31,11 +31,34 @@ function socketPaths() {
     process.env.TMP,
     process.env.TEMP,
     "/tmp",
+    "/var/tmp",
+    "/private/tmp",
+    "/private/var/tmp",
   ].filter(Boolean);
 
-  return directories.flatMap((directory) =>
+  const paths = directories.flatMap((directory) =>
     SOCKET_NAMES.map((name) => `${directory.replace(/\/$/, "")}/${name}`),
   );
+
+  function addMacosTempDirectories(directory, depth) {
+    if (depth === 0) return;
+    let entries;
+    try {
+      entries = fs.readdirSync(directory, { withFileTypes: true });
+    } catch (_) {
+      return;
+    }
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const child = `${directory}/${entry.name}`;
+      paths.push(...SOCKET_NAMES.map((name) => `${child}/${name}`));
+      addMacosTempDirectories(child, depth - 1);
+    }
+  }
+
+  addMacosTempDirectories("/var/folders", 3);
+  return [...new Set(paths)];
 }
 
 function mediaName(mediaPath) {
@@ -111,11 +134,23 @@ function readPacket(socket, callback) {
 
 function findSocket() {
   const paths = socketPaths();
-  return paths.find((path) => fs.existsSync(path)) || paths[0];
+  return paths.find((path) => {
+    try {
+      return fs.statSync(path).isSocket();
+    } catch (_) {
+      return false;
+    }
+  });
 }
 
 function updateDiscord(activity) {
-  const socket = net.createConnection({ path: findSocket() });
+  const socketPath = findSocket();
+  if (!socketPath) {
+    console.log("Discord RPC unavailable: IPC socket not found");
+    return;
+  }
+
+  const socket = net.createConnection({ path: socketPath });
   let finished = false;
 
   const close = () => {
